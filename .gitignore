@@ -10,7 +10,7 @@
 
 # production
 /build
-/datasets/*.js
+/src/datasets/*.js
 
 # misc
 .DS_Store
