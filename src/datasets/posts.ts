@@ -1,17 +1,5 @@
 import users from "./users";
 
-const virtualMixin = (post: Object) => {
-  return Object.assign(
-    {},
-    {
-      ...post,
-      get url() {
-        return `/api/posts/${this._id}`;
-      },
-    }
-  );
-};
-
 const samplePosts = [
   {
     _id: 4879119778,
@@ -23,6 +11,9 @@ const samplePosts = [
     isPublished: true,
     timestamp: new Date(),
     lastUpdate: new Date(),
+    get url() {
+      return `/posts/${this._id}}`
+    }
   },
   {
     _id: 487014701,
@@ -34,7 +25,10 @@ const samplePosts = [
     isPublished: false,
     timestamp: new Date(),
     lastUpdate: new Date(),
+    get url() {
+      return `/posts/${this._id}}`
+    }
   },
 ];
 
-export default samplePosts.map((post) => virtualMixin(post));
+export default samplePosts

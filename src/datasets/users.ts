@@ -1,18 +1,3 @@
-const virtualMixin = (user: Object) => {
-  return Object.assign(
-    {},
-    {
-      ...user,
-      get url() {
-        return `/api/users/${this._id}`;
-      },
-      get fullName() {
-        return `${this.firstName} ${this.lastName}`;
-      },
-    }
-  );
-};
-
 const sampleUsers = [
   {
     _id: 48317409,
@@ -21,6 +6,12 @@ const sampleUsers = [
     firstName: "Anthony",
     lastName: "Mendoza",
     isAdmin: true,
+    get fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    get url() {
+      return `/users/${this._id}`;
+    },
   },
   {
     _id: 4871438974,
@@ -29,6 +20,12 @@ const sampleUsers = [
     firstName: "Fred",
     lastName: "Burger",
     isAdmin: false,
+    get fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    get url() {
+      return `/users/${this._id}`;
+    },
   },
   {
     _id: 4874116515,
@@ -37,7 +34,13 @@ const sampleUsers = [
     firstName: "Claire",
     lastName: "TheOtter",
     isAdmin: false,
+    get fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    get url() {
+      return `/users/${this._id}`;
+    },
   },
 ];
- 
-export default sampleUsers.map((user) => virtualMixin(user));
+
+export default sampleUsers;

@@ -1,25 +1,16 @@
 import users from "./users";
 import posts from "./posts";
 
-const virtualMixin = (comment) => {
-  return Object.assign(
-    {},
-    {
-      ...comment,
-      get url() {
-        return `/api/posts/${this.commentOf._id}/comments/${this._id}`;
-      },
-    }
-  );
-};
-
-const comment1= {
+const comment1 = {
   _id: 854851213,
   author: users[2],
   timestamp: new Date(),
   content: "Wow, so true!",
   commentOf: posts[0],
-  parent: null
+  parent: null,
+  get url() {
+    return `/posts/${this.commentOf._id}/comments/${this._id}`;
+  },
 };
 
 const comment2 = {
@@ -28,7 +19,10 @@ const comment2 = {
   timestamp: new Date(),
   content: "Thanks for reading!",
   commentOf: posts[0],
-  parent: comment1
+  parent: comment1,
+  get url() {
+    return `/posts/${this.commentOf._id}/comments/${this._id}`;
+  },
 };
 
 const comment3 = {
@@ -37,8 +31,11 @@ const comment3 = {
   timestamp: new Date(),
   content: "ikr",
   commentOf: posts[1],
-  parent: null
-}
+  parent: null,
+  get url() {
+    return `/posts/${this.commentOf._id}/comments/${this._id}`;
+  },
+};
 
 const comment4 = {
   _id: 78141515,
@@ -47,15 +44,11 @@ const comment4 = {
   content: "sad but true",
   commentOf: posts[1],
   parent: comment3,
-}
+  get url() {
+    return `/posts/${this.commentOf._id}/comments/${this._id}`;
+  },
+};
 
-const sampleComments = [
-  comment1,
-  comment2,
-  comment3,
-  comment4
-];
+const sampleComments = [comment1, comment2, comment3, comment4];
 
-sampleComments.map(comment => virtualMixin(comment));
-
-export default sampleComments
+export default sampleComments;
