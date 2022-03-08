@@ -1,8 +1,16 @@
 import { useParams } from "react-router-dom";
 
+import sampleUsers from "../../datasets/users";
+
 const User = () => {
   const { userid } = useParams();
-  return <h1>This is user {userid}</h1>;
+  const userData = sampleUsers.find((user) => user._id.toString() === userid);
+  return (
+    <div>
+      <h2>{`${userData.username}#${userData._id}`}</h2>
+      <p>{userData.fullName}</p>
+    </div>
+  );
 };
 
 export default User;
