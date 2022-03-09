@@ -29,7 +29,7 @@ const sampleUsers = [
   },
   {
     _id: 4874116515,
-    userName: "Otter",
+    username: "Otter",
     password: "123",
     firstName: "Claire",
     lastName: "TheOtter",
