@@ -6,7 +6,7 @@ const RecentActivity = (props) => {
   return (
     <li>
       <ActivityPreview activity={activity} />
-      <p>at {format(activity.timestamp, "MM/dd/yyyy")}</p>
+      <p>on {format(activity.timestamp, "MM/dd/yyyy")} at {format(activity.timestamp, "hh:mm:ss a")}</p>
     </li>
   );
 };
