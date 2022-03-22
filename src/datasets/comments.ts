@@ -40,8 +40,8 @@ const comment3 = {
 const comment4 = {
   _id: 78141515,
   author: users[2],
-  timestamp: new Date(),
-  content: "sad but true",
+  timestamp: new Date(new Date().setDate(new Date().getDate() + 1)),
+  content: "sad but true!",
   commentOf: posts[1],
   parent: comment3,
   get url() {
