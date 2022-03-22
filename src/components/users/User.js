@@ -14,8 +14,10 @@ const User = () => {
       return activity.author._id === userData._id;
     }
   ).sort((a,b) => b.timestamp - a.timestamp);
+
+  const styleClasses = "w-full p-14 text-slate-700"
   return (
-    <div>
+    <div className={styleClasses}>
       <h2>{`${userData.username}#${userData._id}`}</h2>
       <p>{userData.fullName}</p>
       <ul>
