@@ -9,10 +9,13 @@ const ActivityPreview = (props) => {
       : activity.content;
   const postTitle =
     activityType === "comment" ? activity.commentOf.title : activity.title;
+  const styleClasses = "flex flex-col";
+  const parentClasses = "self-start";
+  const previewClasses = "text-3xl";
   return (
-    <div>
-      <h3>{activityType === "post" ? postTitle : `In: ${postTitle}`}</h3>
-      <h4>{`"${previewString}"`}</h4>
+    <div className={styleClasses}>
+      <h3 className={parentClasses}>{activityType === "post" ? postTitle : `In: ${postTitle}`}</h3>
+      <h4 className={previewClasses}>{`"${previewString}"`}</h4>
     </div>
   );
 };
