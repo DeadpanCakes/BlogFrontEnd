@@ -5,7 +5,7 @@ const RecentActivity = (props) => {
   const { activity } = props;
 
   const styleClasses = "bg-pink-300 p-7 m-7 rounded-md flex flex-1 flex-col"
-  const timeStyle = "self-end"
+  const timeStyle = "self-end text-sm"
   return (
     <li className={styleClasses}>
       <ActivityPreview activity={activity} />
