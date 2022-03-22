@@ -12,7 +12,7 @@ const samplePosts = [
     timestamp: new Date(),
     lastUpdate: new Date(),
     get url() {
-      return `/posts/${this._id}}`
+      return `/posts/${this._id}`
     }
   },
   {
@@ -26,7 +26,7 @@ const samplePosts = [
     timestamp: new Date(),
     lastUpdate: new Date(),
     get url() {
-      return `/posts/${this._id}}`
+      return `/posts/${this._id}`
     }
   },
 ];
