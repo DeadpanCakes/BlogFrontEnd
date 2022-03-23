@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const styleClasses = "flex p-5 bg-[#111D4A] text-[#C2CAE8] text-2xl";
+  const logoStyle = "hover:drop-shadow-darkxl"
+
   return (
-    <header>
-      <Link to="/">
+    <header className={styleClasses}>
+      <Link className={logoStyle} to="/">
         <h1>Blog</h1>
       </Link>
     </header>
