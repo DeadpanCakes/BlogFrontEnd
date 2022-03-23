@@ -8,29 +8,32 @@ const Post = () => {
   const post = samplePosts.find((post) => {
     return post._id.toString() === postid;
   });
+
   return (
     <div>
-      <h2>{post.title}</h2>
       <section>
-        <p>
-          By <Link to={post.author.url}>{post.author.fullName}</Link>
-        </p>
-        <span>
-          <p>In: </p>
-          <ul>
-            {post.tags.map((tag) => (
-              <li>{tag}</li>
-            ))}
-          </ul>
-        </span>
+        <h2>{post.title}</h2>
+        <section>
+          <p>
+            By <Link to={post.author.url}>{post.author.fullName}</Link>
+          </p>
+          <span>
+            <p>In: </p>
+            <ul>
+              {post.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          </span>
+        </section>
+        <section>
+          <p>{post.content}</p>
+        </section>
       </section>
       <section>
-        <p>{post.content}</p>
-      </section>
-      <div>
         <h4>Comments</h4>
         <CommentList />
-      </div>
+      </section>
     </div>
   );
 };
