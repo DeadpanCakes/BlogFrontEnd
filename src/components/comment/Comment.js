@@ -1,15 +1,18 @@
-import {useParams} from "react-router-dom";
-import sampleComments from "../../datasets/comments";
-
-const Comment = () => {
-    const {commentid} = useParams();
-    const comment = sampleComments.find((comment) => {
-        return comment._id.toString() === commentid
-    })
-    return <li>
+const Comment = ({ comment }) => {
+  const nestedComments = (comment.children || []).map((comment) => {
+    return <Comment key={comment._id} comment={comment} />;
+  });
+  return (
+    <li className="border-2 border-black">
+      <div>
         <h3>{comment.author.username}</h3>
         <p>{comment.content}</p>
+      </div>
+      <ul>
+      {nestedComments}
+      </ul>
     </li>
-}
+  );
+};
 
-export default Comment
+export default Comment;
