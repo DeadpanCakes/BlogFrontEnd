@@ -15,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <div className="min-h-[85vh]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<PostList />} />
@@ -27,7 +28,8 @@ function App() {
             element={<Comment />}
           />
         </Routes>
-        <Footer />
+      </div>
+      <Footer />
     </div>
   );
 }
