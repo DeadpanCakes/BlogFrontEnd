@@ -1,13 +1,32 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import CommentList from "../comment/CommentList";
+import samplePosts from "../../datasets/posts";
 
 const Post = () => {
   const { postid } = useParams();
-  console.log(postid);
+  const post = samplePosts.find((post) => {
+    return post._id.toString() === postid;
+  });
   return (
     <div>
-      <h3>This is post {postid}</h3>
+      <h2>{post.title}</h2>
+      <section>
+        <p>
+          By <Link to={post.author.url}>{post.author.fullName}</Link>
+        </p>
+        <span>
+          <p>In: </p>
+          <ul>
+            {post.tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        </span>
+      </section>
+      <section>
+        <p>{post.content}</p>
+      </section>
       <div>
         <h4>Comments</h4>
         <CommentList />
