@@ -1,7 +1,13 @@
-const Header = () => {
-    return <header>
-        <h1>Blog</h1>
-    </header>
-}
+import { Link } from "react-router-dom";
 
-export default Header
+const Header = () => {
+  return (
+    <header>
+      <Link to="/">
+        <h1>Blog</h1>
+      </Link>
+    </header>
+  );
+};
+
+export default Header;
