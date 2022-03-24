@@ -13,7 +13,7 @@ const Sidebar = ({className}) => {
           .sort((prevPost, currPost) => {
             return currPost.timestamp - prevPost.timestamp;
           })
-          .slice(0, 2)
+          .slice(0, 3)
           .map((post) => {
             return (
               <li key={post._id}>
@@ -28,7 +28,7 @@ const Sidebar = ({className}) => {
           .sort((prevComment, currComment) => {
             return currComment.timestamp - prevComment.timestamp;
           })
-          .slice(0, 2)
+          .slice(0, 3)
           .map((comment) => {
             return (
               <li key={comment._id}>
