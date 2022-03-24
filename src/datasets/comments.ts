@@ -49,11 +49,11 @@ const comment1 = {
   },
 };
 
-const comment4 = {
-  _id: 78141515,
-  author: users[2],
-  timestamp: new Date(new Date().setDate(new Date().getDate() + 1)),
-  content: "sad but true!",
+const comment3 = {
+  _id: 781561658,
+  author: users[1],
+  timestamp: new Date(),
+  content: "ikr",
   commentOf: posts[1],
   children: [],
   get url() {
@@ -61,17 +61,18 @@ const comment4 = {
   },
 };
 
-const comment3 = {
-  _id: 781561658,
-  author: users[1],
-  timestamp: new Date(),
-  content: "ikr",
+const comment4 = {
+  _id: 78141515,
+  author: users[2],
+  timestamp: new Date(new Date().setDate(new Date().getDate() + 1)),
+  content: "sad but true!",
   commentOf: posts[1],
-  children: [comment4],
+  children: [comment3],
   get url() {
     return `/posts/${this.commentOf._id}/comments/${this._id}`;
   },
 };
+
 
 const comment6 = {
   _id: 78156165481,
