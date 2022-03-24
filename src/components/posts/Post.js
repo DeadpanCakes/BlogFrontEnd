@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 
 import CommentList from "../comment/CommentList";
+import Content from "./Content";
 import samplePosts from "../../datasets/posts";
 
 const Post = () => {
@@ -11,7 +12,7 @@ const Post = () => {
 
   return (
     <div>
-      <section>
+      <article>
         <h2>{post.title}</h2>
         <section>
           <p>
@@ -26,10 +27,8 @@ const Post = () => {
             </ul>
           </span>
         </section>
-        <section>
-          <p>{post.content}</p>
-        </section>
-      </section>
+        <Content content={post.content} />
+      </article>
       <section>
         <h4>Comments</h4>
         <CommentList />
