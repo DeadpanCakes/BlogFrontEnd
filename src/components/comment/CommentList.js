@@ -16,12 +16,14 @@ const CommentList = () => {
   const comments = sampleComments.filter((comment) => {
     return comment.commentOf._id.toString() === postid && !isChild(comment);
   });
-  return (
+  return comments.length > 0 ? (
     <ul>
       {comments.map((comment) => {
         return <Comment key={comment._id} comment={comment} />;
       })}
     </ul>
+  ) : (
+    <p>There are no comments yet</p>
   );
 };
 
