@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 
 import CommentList from "../comment/CommentList";
 import Content from "./Content";
+import Sidebar from "../sidebar/Sidebar";
 import samplePosts from "../../datasets/posts";
 
 const Post = () => {
@@ -29,6 +30,7 @@ const Post = () => {
         </section>
         <Content content={post.content} />
       </article>
+      <Sidebar />
       <section>
         <h4>Comments</h4>
         <CommentList />
