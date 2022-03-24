@@ -28,6 +28,32 @@ const samplePosts = [
     get url() {
       return `/posts/${this._id}`
     }
+  },  {
+    _id: 487013701,
+    title: "14 Wild Life Hacks",
+    content:
+      "Blanditiis vel qui est dolorem cum assumenda eius. Voluptatem eius natus. Et cumque rem itaque id similique. Voluptas aut consequatur animi fuga ut minus reprehenderit alias. Deleniti expedita totam non aspernatur sed ea earum. Saepe voluptas inventore dolore facilis id. Ducimus eaque recusandae ullam perspiciatis. Libero culpa quod perferendis quo sequi vitae omnis aspernatur fugiat. In alias quia. Nihil omnis fugit accusantium magnam. Consequatur ut ut omnis aliquam laboriosam. Vel ut facilis dolor qui dolore ut repellat.",
+    author: users[2],
+    tags: ["Tips and Tricks"],
+    isPublished: false,
+    timestamp: new Date(),
+    lastUpdate: new Date(),
+    get url() {
+      return `/posts/${this._id}`
+    }
+  },  {
+    _id: 487014702,
+    title: "Recipe For Sandwich",
+    content:
+      "Blanditiis vel qui est dolorem cum assumenda eius. Voluptatem eius natus. Et cumque rem itaque id similique. Voluptas aut consequatur animi fuga ut minus reprehenderit alias. Deleniti expedita totam non aspernatur sed ea earum. Saepe voluptas inventore dolore facilis id. Ducimus eaque recusandae ullam perspiciatis. Libero culpa quod perferendis quo sequi vitae omnis aspernatur fugiat. In alias quia. Nihil omnis fugit accusantium magnam. Consequatur ut ut omnis aliquam laboriosam. Vel ut facilis dolor qui dolore ut repellat.",
+    author: users[0],
+    tags: ["Food", "Recipes"],
+    isPublished: false,
+    timestamp: new Date(),
+    lastUpdate: new Date(),
+    get url() {
+      return `/posts/${this._id}`
+    }
   },
 ];
 
