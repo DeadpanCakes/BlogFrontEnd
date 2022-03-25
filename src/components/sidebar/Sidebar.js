@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import PostList from "../posts/PostList";
 import sampleComments from "../../datasets/comments";
 
-const Sidebar = ({ className }) => {
-  const sidebarStyle =
+const Sidebar = ({ sidebarStyle }) => {
+  const containerStyle =
     "border-dark border-4 rounded-md flex flex-col min-h-[50vh]";
   const titleStyle = "text-3xl bg-highlight";
   const sectionStyle = "flex-1 flex flex-col list-none text-left";
   return (
-    <nav className={className + " " + sidebarStyle}>
+    <nav className={sidebarStyle + " " + containerStyle}>
       <Link to="/posts" className={titleStyle + " bg-darkBG text-darkFont"}>
         All posts
       </Link>
