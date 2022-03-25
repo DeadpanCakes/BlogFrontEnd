@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 import PostList from "../posts/PostList";
-import samplePosts from "../../datasets/posts";
 import sampleComments from "../../datasets/comments";
 
 const Sidebar = ({className}) => {
