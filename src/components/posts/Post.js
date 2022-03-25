@@ -13,6 +13,7 @@ const Post = () => {
 
   const containerStyle = "grid grid-cols-3 items-center p-10 pr-44 gap-10";
   const mainStyle = "col-span-2 p-10 pl-44 self-end"
+  const sidebarStyle = "self-start"
   return (
     <div className={containerStyle}>
       <main className={mainStyle}>
@@ -31,14 +32,14 @@ const Post = () => {
               </ul>
             </span>
           </section>
-          <Content content={post.content} />
+          <Content content={post.content} sidebarStyle={sidebarStyle} />
         </article>
         <section>
           <h4>Comments</h4>
           <CommentList />
         </section>
       </main>
-      <Sidebar />
+      <Sidebar sidebarStyle={sidebarStyle}/>
     </div>
   );
 };
