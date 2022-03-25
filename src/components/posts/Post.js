@@ -11,7 +11,7 @@ const Post = () => {
     return post._id.toString() === postid;
   });
 
-  const containerStyle = "grid grid-cols-3 items-center";
+  const containerStyle = "grid grid-cols-3 items-center p-10 pr-44 gap-10";
   const mainStyle = "col-span-2 p-10 pl-44 self-end"
   return (
     <div className={containerStyle}>
