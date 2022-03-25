@@ -10,7 +10,7 @@ const Home = () => {
       <main className={mainStyle}>
         <h2>Home</h2>
       </main>
-      <Sidebar className={sidebarStyle} />
+      <Sidebar sidebarStyle={sidebarStyle} />
     </div>
   );
 };
