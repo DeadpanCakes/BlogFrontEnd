@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+import PostList from "../posts/PostList";
 import samplePosts from "../../datasets/posts";
 import sampleComments from "../../datasets/comments";
 
@@ -9,18 +10,7 @@ const Sidebar = ({className}) => {
       <Link to="/posts">All posts</Link>
       <section>
         <h4>Recent Posts</h4>
-        {samplePosts
-          .sort((prevPost, currPost) => {
-            return currPost.timestamp - prevPost.timestamp;
-          })
-          .slice(0, 3)
-          .map((post) => {
-            return (
-              <li key={post._id}>
-                <Link to={post.url}>{post.title}</Link>
-              </li>
-            );
-          })}
+        <PostList beginning={0} end={3} />
       </section>
       <section>
         <h4>Recent Comments</h4>
