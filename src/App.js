@@ -9,7 +9,6 @@ import Post from "./components/posts/Post";
 import UserList from "./components/users/UserList";
 import User from "./components/users/User";
 import CommentList from "./components/comment/CommentList";
-import Comment from "./components/comment/Comment";
 
 function App() {
   return (
@@ -25,7 +24,7 @@ function App() {
           <Route path="/posts/:postid/comments" element={<CommentList />} />
           <Route
             path="/posts/:postid/comments/:commentid"
-            element={<Comment />}
+            element={<Post />}
           />
         </Routes>
       </div>
