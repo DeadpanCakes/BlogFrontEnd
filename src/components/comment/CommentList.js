@@ -16,6 +16,7 @@ const CommentList = () => {
   const comments = sampleComments.filter((comment) => {
     return comment.commentOf._id.toString() === postid && !isChild(comment);
   });
+
   return comments.length > 0 ? (
     <ul>
       {comments.map((comment) => {
