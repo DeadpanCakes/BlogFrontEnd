@@ -14,7 +14,9 @@ const Post = () => {
   const containerStyle = "grid grid-cols-3 items-center p-10 pr-44 gap-10";
   const mainStyle = "col-span-2 p-10 pl-44 self-end"
   const sidebarStyle = "self-start"
-  const commentSection = "text-left"
+  const commentsStyle = "text-left"
+  const commentTitleStyle = "border-darkBG border-y-2 text-2xl"
+
   return (
     <div className={containerStyle}>
       <main className={mainStyle}>
@@ -35,8 +37,8 @@ const Post = () => {
           </section>
           <Content content={post.content} sidebarStyle={sidebarStyle} />
         </article>
-        <section className={commentSection}>
-          <h4>Comments</h4>
+        <section className={commentsStyle}>
+          <h4 className={commentTitleStyle}>Comments</h4>
           <CommentList />
         </section>
       </main>
