@@ -5,7 +5,7 @@ const Comment = ({ comment }) => {
     return <Comment key={comment._id} comment={comment} />;
   });
   return (
-    <li className="border-2 border-black">
+    <li className="pt-5 pl-5 border-l border-darkBG bg-[#C2CAE8]">
       <div>
         <h3>
           <Link to={comment.author.url}>{comment.author.username}</Link>
