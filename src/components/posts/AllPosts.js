@@ -1,9 +1,9 @@
 import PostList from "./PostList";
 
 const AllPosts = () => {
-  const containerStyle = "flex px-40 py-10";
+  const containerStyle = "flex pl-60 pr-40 py-10 min-h-[100vh]";
   const titleStyle = "py-10"
-  const controlStyle = "max-w-[20vw] min-w-[10vw]";
+  const controlStyle = "flex-1 border-2 border-darkBG max-w-[25vw]";
   const postsStyle = "flex-1";
   return (
     <div>
