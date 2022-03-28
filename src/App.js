@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
-import PostList from "./components/posts/PostList";
+import AllPosts from "./components/posts/AllPosts";
 import Post from "./components/posts/Post";
 import UserList from "./components/users/UserList";
 import User from "./components/users/User";
@@ -18,7 +18,7 @@ function App() {
       <div className="min-h-[85vh]">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/posts" element={<PostList />} />
+          <Route path="/posts" element={<AllPosts />} />
           <Route path="/posts/:postid" element={<Post />} />
           <Route path="/users" element={<UserList />} />
           <Route path="/users/:userid/" element={<User />} />
