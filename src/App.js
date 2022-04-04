@@ -9,6 +9,8 @@ import Post from "./components/posts/Post";
 import UserList from "./components/users/UserList";
 import User from "./components/users/User";
 import CommentList from "./components/comment/CommentList";
+import LoginPage from "./components/authentication/LoginPage";
+import SignUpPage from "./components/authentication/SignUpPage";
 
 function App() {
   return (
@@ -22,10 +24,9 @@ function App() {
           <Route path="/users" element={<UserList />} />
           <Route path="/users/:userid/" element={<User />} />
           <Route path="/posts/:postid/comments" element={<CommentList />} />
-          <Route
-            path="/posts/:postid/comments/:commentid"
-            element={<Post />}
-          />
+          <Route path="/posts/:postid/comments/:commentid" element={<Post />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
         </Routes>
       </div>
       <Footer />
