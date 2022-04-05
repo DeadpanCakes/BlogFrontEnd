@@ -18,13 +18,15 @@ const LoginForm = () => {
       });
     };
 
-    postData("https://still-depths-86703.herokuapp.com/api/login", userInfo)
-      .then((res) => res.text())
-      .then((data) => console.log(data))
-      .catch((err) => console.error(err));
     //fetch login api with data in body
-    //receive jwt token
-    //place token in localstorage
+    postData("https://still-depths-86703.herokuapp.com/api/login", userInfo)
+      .then((res) => res.json())
+      //receive jwt token
+      .then((data) => {
+        //place token in localstorage
+        console.log(data.token)
+      })
+      .catch((err) => console.error(err));
   };
   return (
     <form
