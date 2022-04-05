@@ -9,13 +9,19 @@ const LoginForm = () => {
   const handleSumbit = () => {
     //construct data from state
     const userInfo = JSON.stringify({ username, password: pass });
-    const postData = (url, data) => {
-      return fetch(url, {
+    const postData = (url, data, auth) => {
+      const options = {
         method: "POST",
         mode: "cors",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: data,
-      });
+      };
+      if (auth) {
+        options.Authorization = auth;
+      }
+      return fetch(url, options);
     };
 
     //fetch login api with data in body
@@ -24,7 +30,7 @@ const LoginForm = () => {
       //receive jwt token
       .then((data) => {
         //place token in localstorage
-        console.log(data.token)
+        console.log(data.token);
       })
       .catch((err) => console.error(err));
   };
