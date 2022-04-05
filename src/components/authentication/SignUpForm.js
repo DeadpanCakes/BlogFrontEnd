@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import postData from "../../utils/postData";
+
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [firstName, setFirst] = useState("");
@@ -9,14 +11,24 @@ const SignUpForm = () => {
   const handleChange = (setState, newState) => {
     setState(newState);
   };
+
+  const handleSubmit = () => {
+    //validate
+    const userInfo = {
+      username,
+      firstName,
+      lastName,
+      password: pass,
+    };
+    console.log(userInfo);
+    postData("https://still-depths-86703.herokuapp.com/api/users", userInfo);
+  };
   return (
     <form
+      id="signUpForm"
       onSubmit={(e) => {
         e.preventDefault();
-        //construct data from state
-        //fetch login api with data in body
-        //receive jwt token
-        //place token in localstorage
+        handleSubmit();
       }}
     >
       <label htmlFor="username">Username</label>
@@ -56,6 +68,7 @@ const SignUpForm = () => {
         onChange={(e) => handleChange(setConfirm, e.target.value)}
         type="password"
       ></input>
+      <button>Submit</button>
     </form>
   );
 };
