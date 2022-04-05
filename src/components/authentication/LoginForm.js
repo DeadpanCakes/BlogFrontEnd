@@ -30,7 +30,7 @@ const LoginForm = () => {
       //receive jwt token
       .then((data) => {
         //place token in localstorage
-        console.log(data.token);
+        localStorage.setItem("jwt",data.token);
       })
       .catch((err) => console.error(err));
   };
