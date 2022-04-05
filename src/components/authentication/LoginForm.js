@@ -8,6 +8,20 @@ const LoginForm = () => {
   };
   const handleSumbit = () => {
     //construct data from state
+    const userInfo = JSON.stringify({ username, password: pass });
+    const postData = (url, data) => {
+      return fetch(url, {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: data,
+      });
+    };
+
+    postData("https://still-depths-86703.herokuapp.com/api/login", userInfo)
+      .then((res) => res.text())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
     //fetch login api with data in body
     //receive jwt token
     //place token in localstorage
@@ -34,6 +48,7 @@ const LoginForm = () => {
         onChange={(e) => handleChange(setPass, e.target.value)}
         type="password"
       />
+      <button>Submit</button>
     </form>
   );
 };
