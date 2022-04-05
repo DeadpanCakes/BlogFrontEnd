@@ -10,7 +10,7 @@ const LoginForm = () => {
   };
   const handleSumbit = () => {
     //construct data from state
-    const userInfo = JSON.stringify({ username, password: pass });
+    const userInfo = { username, password: pass };
 
     //fetch login api with data in body
     postData("https://still-depths-86703.herokuapp.com/api/login", userInfo)

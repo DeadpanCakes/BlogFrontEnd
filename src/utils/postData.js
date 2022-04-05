@@ -5,7 +5,7 @@ const postData = (url, data, auth) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: data,
+    body: JSON.stringify(data),
   };
   if (auth) {
     options.Authorization = auth;
