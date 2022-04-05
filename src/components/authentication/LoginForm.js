@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import postData from "../../utils/postData";
+
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [pass, setPass] = useState("");
@@ -9,20 +11,6 @@ const LoginForm = () => {
   const handleSumbit = () => {
     //construct data from state
     const userInfo = JSON.stringify({ username, password: pass });
-    const postData = (url, data, auth) => {
-      const options = {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: data,
-      };
-      if (auth) {
-        options.Authorization = auth;
-      }
-      return fetch(url, options);
-    };
 
     //fetch login api with data in body
     postData("https://still-depths-86703.herokuapp.com/api/login", userInfo)
@@ -30,7 +18,7 @@ const LoginForm = () => {
       //receive jwt token
       .then((data) => {
         //place token in localstorage
-        localStorage.setItem("jwt",data.token);
+        localStorage.setItem("jwt", data.token);
       })
       .catch((err) => console.error(err));
   };
