@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 
 import Profile from "./Profile";
 
-const Header = ({loggedUser}) => {
-  const styleClasses = "flex p-5 bg-[#111D4A] text-darkFont text-2xl";
+const Header = ({ loggedUser }) => {
+  const styleClasses =
+    "flex p-5 bg-[#111D4A] text-darkFont text-2xl justify-between";
   const logoStyle = "hover:drop-shadow-darkxl";
 
   return (
@@ -11,8 +12,16 @@ const Header = ({loggedUser}) => {
       <Link className={logoStyle} to="/">
         <h1>Blog</h1>
       </Link>
-      {loggedUser ? <Profile /> : <button>Log In</button>}
+      {loggedUser ? <Profile /> : <LogInButton />}
     </header>
+  );
+};
+
+const LogInButton = () => {
+  return (
+    <Link to="/login">
+      <button>Log In</button>
+    </Link>
   );
 };
 
