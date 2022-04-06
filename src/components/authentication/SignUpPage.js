@@ -1,7 +1,16 @@
-import SignUpForm from "./SignUpForm";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const SignUpPage = () => {
+import SignUpForm from "./SignUpForm";
+
+const SignUpPage = ({ isLogged }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isLogged) {
+      console.log("reached");
+      navigate("/");
+    }
+  }, [isLogged, navigate]);
   return (
     <div>
       <h2>Sign Up</h2>
