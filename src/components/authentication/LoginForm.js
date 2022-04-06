@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import postData from "../../utils/postData";
 
-const LoginForm = () => {
+const LoginForm = ({login}) => {
   const [username, setUsername] = useState("");
   const [pass, setPass] = useState("");
   const handleChange = (setState, newState) => {
@@ -19,6 +19,7 @@ const LoginForm = () => {
       .then((data) => {
         //place token in localstorage
         localStorage.setItem("jwt", data.token);
+        login(data.token);
       })
       .catch((err) => console.error(err));
   };
