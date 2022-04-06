@@ -46,15 +46,8 @@ function App() {
   return (
     <AuthContext.Provider value={authData}>
       <div className="App">
-        <Header />
+        <Header loggedUser={loggedUser} />
         <div className="min-h-[85vh]">
-          <button
-            onClick={() => {
-              logoutUser();
-            }}
-          >
-            Log Out
-          </button>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/posts" element={<AllPosts />} />
@@ -66,8 +59,14 @@ function App() {
               path="/posts/:postid/comments/:commentid"
               element={<Post />}
             />
-            <Route path="/login" element={<LoginPage isLogged={authData.loggedUser} />} />
-            <Route path="/sign-up" element={<SignUpPage isLogged={authData.loggedUser}/>} />
+            <Route
+              path="/login"
+              element={<LoginPage isLogged={authData.loggedUser} />}
+            />
+            <Route
+              path="/sign-up"
+              element={<SignUpPage isLogged={authData.loggedUser} />}
+            />
           </Routes>
         </div>
         <Footer />
