@@ -67,7 +67,7 @@ function App() {
               element={<Post />}
             />
             <Route path="/login" element={<LoginPage isLogged={authData.loggedUser} />} />
-            <Route path="/sign-up" element={<SignUpPage />} />
+            <Route path="/sign-up" element={<SignUpPage isLogged={authData.loggedUser}/>} />
           </Routes>
         </div>
         <Footer />
