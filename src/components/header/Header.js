@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+import LoginBtn from "../authentication/LoginBtn";
 import Profile from "./Profile";
 
 const Header = ({ loggedUser }) => {
@@ -12,16 +13,8 @@ const Header = ({ loggedUser }) => {
       <Link className={logoStyle} to="/">
         <h1>Blog</h1>
       </Link>
-      {loggedUser ? <Profile loggedUser={loggedUser} /> : <LogInButton />}
+      {loggedUser ? <Profile loggedUser={loggedUser} /> : <LoginBtn />}
     </header>
-  );
-};
-
-const LogInButton = () => {
-  return (
-    <Link to="/login">
-      <button>Log In</button>
-    </Link>
   );
 };
 
