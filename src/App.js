@@ -16,7 +16,9 @@ import LoginPage from "./components/authentication/LoginPage";
 import SignUpPage from "./components/authentication/SignUpPage";
 
 function App() {
-  const [loggedUser, setLoggedUser] = useState(localStorage.getItem("jwt"));
+  const [loggedUser, setLoggedUser] = useState(
+    jwtDecode(localStorage.getItem("jwt"))
+  );
   const loginUser = (jwt) => {
     const user = jwtDecode(jwt);
     console.log(user);
