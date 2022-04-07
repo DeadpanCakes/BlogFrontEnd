@@ -16,9 +16,7 @@ import LoginPage from "./components/authentication/LoginPage";
 import SignUpPage from "./components/authentication/SignUpPage";
 
 function App() {
-  const [loggedUser, setLoggedUser] = useState(
-    jwtDecode(localStorage.getItem("jwt"))
-  );
+  const [loggedUser, setLoggedUser] = useState(null);
   const loginUser = (jwt) => {
     const user = jwtDecode(jwt);
     console.log(user);
@@ -41,6 +39,8 @@ function App() {
       const currTime = new Date();
       if (currTime > exp) {
         logoutUser();
+      } else {
+        setLoggedUser(jwtDecode(jwt));
       }
     }
   }, []);
