@@ -11,6 +11,8 @@
 # production
 /build
 /src/datasets/*.js
+/src/interfaces/*.js
+/src/hooks/*.js
 
 # misc
 .DS_Store
