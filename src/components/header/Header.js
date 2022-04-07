@@ -12,7 +12,7 @@ const Header = ({ loggedUser }) => {
       <Link className={logoStyle} to="/">
         <h1>Blog</h1>
       </Link>
-      {loggedUser ? <Profile /> : <LogInButton />}
+      {loggedUser ? <Profile loggedUser={loggedUser} /> : <LogInButton />}
     </header>
   );
 };
