@@ -1,27 +1,35 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import sampleUsers from "../../datasets/users";
-import samplePosts from "../../datasets/posts";
-import sampleComments from "../../datasets/comments";
+import useUsers from "../../hooks/useUsers";
+import fetchRecentActivity from "../../utils/fetchRecentActivity";
 import RecentActivity from "./RecentActivity";
 
 const User = () => {
   const { userid } = useParams();
-  const userData = sampleUsers.find((user) => user._id.toString() === userid);
-  const publishedPosts = samplePosts.filter(post => post.isPublished)
-  const recentActivity = [...publishedPosts, ...sampleComments].filter(
-    (activity) => {
-      return activity.author._id === userData._id;
+  const { users, findUser } = useUsers();
+  const [user, setUser] = useState({});
+  const [activity, setActivity] = useState([]);
+  useEffect(() => {
+    if (users.length > 0) {
+      setUser(findUser(userid));
     }
-  ).sort((a,b) => b.timestamp - a.timestamp);
-
-  const styleClasses = "w-full p-14 text-slate-700"
+  }, [users, userid, findUser]);
+  useEffect(() => {
+    if (user._id) {
+      fetchRecentActivity(user._id).then((activity) => {
+        setActivity([...activity.posts, ...activity.comments]);
+      });
+    }
+  }, [user]);
+  const styleClasses = "w-full p-14 text-slate-700";
   return (
     <div className={styleClasses}>
-      <h2>{`${userData.username}#${userData._id}`}</h2>
-      <p>{userData.fullName}</p>
+      <h2>{`${user.username}#${user._id}`}</h2>
+      <p>{user.fullName}</p>
+      <button onClick={() => console.log(activity)}>clock</button>
       <ul>
-        {recentActivity.map((activity) => {
+        {activity.map((activity) => {
           return <RecentActivity key={activity._id} activity={activity} />;
         })}
       </ul>
