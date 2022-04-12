@@ -14,7 +14,9 @@ const ActivityPreview = (props) => {
   const previewClasses = "text-3xl";
   return (
     <div className={styleClasses}>
-      <h3 className={parentClasses}>{activityType === "post" ? postTitle : `In: ${postTitle}`}</h3>
+      <h3 className={parentClasses}>
+        {activityType === "post" ? postTitle : `In: ${postTitle}`}
+      </h3>
       <h4 className={previewClasses}>{`"${previewString}"`}</h4>
     </div>
   );
