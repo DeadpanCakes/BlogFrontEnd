@@ -16,7 +16,9 @@ const useUsers = () => {
   }, []);
 
   const findUser = (targetID: String) => {
-    return users.find((user) => user._id === targetID);
+    return users.find((user) => {
+     return user._id === targetID;
+    });
   };
 
   return { users, findUser };
