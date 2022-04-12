@@ -6,6 +6,7 @@ import identifyDoc from "../../utils/identifyDoc";
 
 const RecentActivity = (props) => {
   const { activity } = props;
+  const timestamp = new Date(activity.timestamp);
 
   const docType = identifyDoc(activity);
 
@@ -16,15 +17,15 @@ const RecentActivity = (props) => {
       <HashLink
         to={
           docType === "comment"
-            ? `${activity.url}#${activity._id}`
-            : activity.url
+            ? `/posts/${activity.commentOf._id}/comments${activity._id}#${activity._id}`
+            : `/posts/${activity._id}`
         }
         className={styleClasses}
       >
         <ActivityPreview activity={activity} />
         <p className={timeStyle}>
-          on {format(activity.timestamp, "MM/dd/yyyy")} at{" "}
-          {format(activity.timestamp, "hh:mm:ss a")}
+          on {format(timestamp, "MM/dd/yyyy")} at{" "}
+          {format(timestamp, "hh:mm:ss a")}
         </p>
       </HashLink>
     </li>
