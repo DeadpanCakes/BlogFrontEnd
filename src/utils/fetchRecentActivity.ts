@@ -3,7 +3,6 @@ const fetchRecentActivity = async (userid: String) => {
     `https://still-depths-86703.herokuapp.com/api/users/${userid}/activity`
   );
   const payload = await response.json();
-  console.log(payload)
   return payload;
 };
 
