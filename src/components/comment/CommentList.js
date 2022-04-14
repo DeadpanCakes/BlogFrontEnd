@@ -1,27 +1,24 @@
+
 import { useParams } from "react-router-dom";
 
-import sampleComments from "../../datasets/comments";
+import useComments from "../../hooks/useComments";
 import Comment from "./Comment";
+import structureComments from "../../utils/structureComments";
 
 const CommentList = () => {
   const { postid } = useParams();
-
-  const isChild = (targetComment) => {
-    return sampleComments.find((comment) => {
-      return comment.children.find((comment) => {
-        return comment._id === targetComment._id;
-      });
-    });
-  };
-  const comments = sampleComments.filter((comment) => {
-    return comment.commentOf._id.toString() === postid && !isChild(comment);
-  });
+  const commentData = useComments(postid);
+  const comments = structureComments(commentData);
 
   return comments.length > 0 ? (
     <ul>
-      {comments.map((comment) => {
-        return <Comment key={comment._id} comment={comment} />;
-      })}
+      {comments.length > 0 ? (
+        comments.map((comment) => {
+          return <Comment key={comment._id} comment={comment} />;
+        })
+      ) : (
+        <div>Loading...</div>
+      )}
     </ul>
   ) : (
     <p>There are no comments yet</p>
