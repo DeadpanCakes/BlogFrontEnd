@@ -10,6 +10,19 @@ const Profile = ({ loggedUser }) => {
   const toggleClicked = () => setClicked((prevState) => !prevState);
 
   useEffect(() => {
+    const handleClick = (click) => {
+      const dropdown = document.querySelector(".dropdown");
+      if (!dropdown.contains(click.target) && clicked) {
+        toggleClicked();
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, [clicked]);
+
+  useEffect(() => {
     setUser(findUser(loggedUser._id));
   }, [users, findUser, loggedUser]);
   return (
@@ -17,7 +30,7 @@ const Profile = ({ loggedUser }) => {
       <button onClick={toggleClicked}>
         {user ? `Welcome, ${user.firstName}` : "Loading"}
       </button>
-      <ProfileDropDown isDisplayed={clicked} user={{_id: 1}}/>
+      <ProfileDropDown isDisplayed={clicked} user={{ _id: 1 }} />
     </div>
   );
 };
