@@ -13,6 +13,7 @@
 /src/datasets/*.js
 /src/interfaces/*.js
 /src/hooks/*.js
+/src/utils/fetchRecentActivity.js
 
 # misc
 .DS_Store
