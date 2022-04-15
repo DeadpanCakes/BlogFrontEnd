@@ -54,7 +54,7 @@ const Post = () => {
           </section>
         </main>
       ) : (
-        <div>Loading...</div>
+        <main className={mainStyle}>Loading...</main>
       )}
       <Sidebar sidebarStyle={sidebarStyle} />
     </div>
