@@ -13,7 +13,7 @@ const ProfileDropDown = ({ isDisplayed }) => {
       {(authData) => {
         const { loggedUser, logoutUser } = authData;
         return (
-          <div className={containerStyle}>
+          <div className={"profileDropdown " + containerStyle}>
             <nav className={navStyle}>
               <Link className={linkStyle} to={`/users/${loggedUser._id}`}>
                 Profile
