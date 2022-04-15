@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
 import AuthContext from "./components/context/AuthContext";
@@ -16,10 +16,11 @@ import LoginPage from "./components/authentication/LoginPage";
 import SignUpPage from "./components/authentication/SignUpPage";
 
 function App() {
+  const navigate = useNavigate();
+
   const [loggedUser, setLoggedUser] = useState(null);
   const loginUser = (jwt) => {
     const user = jwtDecode(jwt);
-    console.log(user);
     setLoggedUser({
       _id: user._id,
       username: user.username,
@@ -30,6 +31,7 @@ function App() {
   const logoutUser = () => {
     setLoggedUser(null);
     localStorage.removeItem("jwt");
+    navigate("/");
   };
   const authData = { loggedUser, loginUser, logoutUser };
   useEffect(() => {
