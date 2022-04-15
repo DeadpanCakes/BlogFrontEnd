@@ -5,7 +5,8 @@ import AuthContext from "../context/AuthContext";
 const ProfileDropDown = ({ isDisplayed }) => {
   const containerStyle = "absolute right-0.5";
   const display = isDisplayed ? "flex flex-col" : "hidden";
-  const navStyle = "bg-darkBG border-2 px-10 rounded-sm " + display;
+  const navStyle = "bg-darkBG border-2 rounded-sm " + display;
+  const linkStyle = "px-10 hover:bg-highlight hover:text-black";
 
   return (
     <AuthContext.Consumer>
@@ -14,9 +15,15 @@ const ProfileDropDown = ({ isDisplayed }) => {
         return (
           <div className={containerStyle}>
             <nav className={navStyle}>
-              <Link to={`/users/${loggedUser._id}`}>Profile</Link>
-              <Link to="/">Posts</Link>
-              <button onClick={logoutUser}>Logout</button>
+              <Link className={linkStyle} to={`/users/${loggedUser._id}`}>
+                Profile
+              </Link>
+              <Link className={linkStyle} to="/">
+                Posts
+              </Link>
+              <button className={linkStyle} onClick={logoutUser}>
+                Logout
+              </button>
             </nav>
           </div>
         );
