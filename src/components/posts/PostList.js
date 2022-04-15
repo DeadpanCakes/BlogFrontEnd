@@ -23,7 +23,7 @@ const PostList = ({ beginning, end }) => {
               <Link to={post.fetchUrl}>
                 <p className={postTitleStyle}>{post.title}</p>
               </Link>
-              <Link to={post.author.url} className={authorCredit}>
+              <Link to={post.author.fetchUrl} className={authorCredit}>
                 <p>
                   by {post.author.username} on{" "}
                   {format(new Date(post.timestamp), "MM/dd/yyyy")} at{" "}
