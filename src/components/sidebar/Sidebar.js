@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 import PostList from "../posts/PostList";
-import sampleComments from "../../datasets/comments";
 
 const Sidebar = ({ sidebarStyle }) => {
   const containerStyle =
@@ -16,23 +15,6 @@ const Sidebar = ({ sidebarStyle }) => {
       <section className={sectionStyle}>
         <h4 className={titleStyle}>Recent Posts</h4>
         <PostList beginning={0} end={3} />
-      </section>
-      <section className={sectionStyle}>
-        <h4 className={titleStyle}>Recent Comments</h4>
-        <ul className="list-none">
-          {sampleComments
-            .sort((prevComment, currComment) => {
-              return currComment.timestamp - prevComment.timestamp;
-            })
-            .slice(0, 3)
-            .map((comment) => {
-              return (
-                <li key={comment._id}>
-                  <Link to={comment.url}>{comment.content}</Link>
-                </li>
-              );
-            })}
-        </ul>
       </section>
     </nav>
   );
