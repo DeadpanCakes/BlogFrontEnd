@@ -14,6 +14,7 @@ import User from "./components/users/User";
 import CommentList from "./components/comment/CommentList";
 import LoginPage from "./components/authentication/LoginPage";
 import SignUpPage from "./components/authentication/SignUpPage";
+import ErrPage from "./components//errPage/ErrorPage";
 
 function App() {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ function App() {
               path="/sign-up"
               element={<SignUpPage isLogged={authData.loggedUser} />}
             />
+            <Route path="/err" element={<ErrPage />} />
           </Routes>
         </div>
         <Footer />
