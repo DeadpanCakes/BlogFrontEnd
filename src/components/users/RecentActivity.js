@@ -10,7 +10,10 @@ const RecentActivity = (props) => {
   const timeStyle = "self-end text-sm";
   return (
     <li>
-      <HashLink to={activity.fetchUrl} className={styleClasses}>
+      <HashLink
+        to={activity.fetchUrl + `#${activity._id}`}
+        className={styleClasses}
+      >
         <ActivityPreview activity={activity} />
         <p className={timeStyle}>
           on {format(timestamp, "MM/dd/yyyy")} at{" "}
