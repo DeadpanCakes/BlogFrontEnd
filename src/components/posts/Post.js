@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import CommentList from "../comment/CommentList";
 import Content from "./Content";
 import Sidebar from "../sidebar/Sidebar";
-import usePosts from "../../hooks/usePosts";
+import usePost from "../../hooks/usePost";
 
 const Post = () => {
   const { postid } = useParams();
-  const posts = usePosts();
-  const [post, setPost] = useState(null);
+  const navigate = useNavigate();
+
+  const [post, err] = usePost(postid);
+
   useEffect(() => {
-    setPost(
-      posts.find((post) => {
-        return post._id === postid;
-      })
-    );
-  }, [postid, posts]);
+    if (err) {
+      navigate("/err", { state: err });
+    }
+  }, [err, navigate]);
 
   const containerStyle = "grid grid-cols-3 items-center p-10 pr-44 gap-10";
   const mainStyle = "col-span-2 p-10 pl-44 self-end";
