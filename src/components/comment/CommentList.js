@@ -1,12 +1,7 @@
-import { useParams } from "react-router-dom";
-
-import useComments from "../../hooks/useComments";
 import Comment from "./Comment";
 import structureComments from "../../utils/structureComments";
 
-const CommentList = ({ setReply }) => {
-  const { postid } = useParams();
-  const commentData = useComments(postid);
+const CommentList = ({ commentData, setReply, setContent, setEditing }) => {
   const comments = structureComments(commentData);
 
   return comments.length > 0 ? (
@@ -14,7 +9,13 @@ const CommentList = ({ setReply }) => {
       {comments.length > 0 ? (
         comments.map((comment) => {
           return (
-            <Comment key={comment._id} comment={comment} setReply={setReply} />
+            <Comment
+              key={comment._id}
+              comment={comment}
+              setReply={setReply}
+              setContent={setContent}
+              setEditing={setEditing}
+            />
           );
         })
       ) : (
