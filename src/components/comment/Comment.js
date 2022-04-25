@@ -44,10 +44,17 @@ const Comment = ({ comment, setReply, setContent, setEditing }) => {
             <div>
               {auth.loggedUser ? (
                 auth.loggedUser._id === comment.author._id ? (
-                  <button onClick={handleEdit}>Edit</button>
-                ) : null
+                  <>
+                    <button onClick={handleEdit}>Edit</button>
+                    <Link to={`/comments/${comment._id}/delete`}>
+                      <button>Delete</button>
+                    </Link>
+                    <button onClick={handleReply}>Reply</button>
+                  </>
+                ) : (
+                  <button onClick={handleReply}>Reply</button>
+                )
               ) : null}
-              <button onClick={handleReply}>Reply</button>
             </div>
             <ul>{nestedComments}</ul>
           </li>
