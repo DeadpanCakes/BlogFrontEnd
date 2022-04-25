@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Editor } from "@tinymce/tinymce-react";
 
@@ -6,18 +5,28 @@ import postData from "../../utils/postData";
 import getBearerToken from "../../utils/getBearerToken";
 import ReplyIndicator from "./ReplyIndicator";
 
-const CommentForm = ({ postid, replyingTo, setReply }) => {
+const CommentForm = ({
+  postid,
+  replyingTo,
+  setReply,
+  formContent,
+  setContent,
+  editTarget,
+}) => {
   const navigate = useNavigate();
-  const [content, setContent] = useState("");
-  const handleEditorChange = (e) => {
-    setContent(e.target.getContent());
+  const handleEditorChange = (input) => {
+    setContent(input);
   };
 
   const submitForm = async () => {
+    const url = editTarget
+      ? `https://still-depths-86703.herokuapp.com/api/posts/${postid}/comments/${editTarget}`
+      : `https://still-depths-86703.herokuapp.com/api/posts/${postid}/comments`;
     postData(
-      `https://still-depths-86703.herokuapp.com/api/posts/${postid}/comments`,
-      { content, parent: replyingTo.id },
-      getBearerToken()
+      url,
+      { content: formContent, parent: replyingTo ? replyingTo.id : null },
+      getBearerToken(),
+      editTarget ? "PUT" : "POST"
     ).then((res) => {
       res.json().then((data) => {
         navigate(data.fetchUrl + `#${data._id}`);
@@ -32,13 +41,14 @@ const CommentForm = ({ postid, replyingTo, setReply }) => {
         <ReplyIndicator replyingTo={replyingTo} setReply={setReply} />
       ) : null}
       <Editor
+        id="commentTextArea"
+        value={formContent}
         apiKey="q8ahd89ah5ao7xw1xi5jqo9xbjk8ulfsw1kp5flod644xamm"
         init={{
-          toolbar:
-            "undo redo | bold italic | alignleft aligncenter alignright",
+          toolbar: "undo redo | bold italic | alignleft aligncenter alignright",
           placeholder: "Share Your Thoughts",
         }}
-        onChange={handleEditorChange}
+        onEditorChange={handleEditorChange}
       />
       <button
         onClick={(e) => {
