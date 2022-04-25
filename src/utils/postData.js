@@ -8,7 +8,7 @@ const postData = (url, data, auth) => {
     body: JSON.stringify(data),
   };
   if (auth) {
-    options.Authorization = auth;
+    options.headers.Authorization = auth;
   }
   return fetch(url, options);
 };
