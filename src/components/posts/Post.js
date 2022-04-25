@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
-import CommentList from "../comment/CommentList";
+import CommentSection from "../comment/CommentSection";
 import Content from "./Content";
 import Sidebar from "../sidebar/Sidebar";
 import usePost from "../../hooks/usePost";
@@ -21,8 +21,6 @@ const Post = () => {
   const containerStyle = "grid grid-cols-3 items-center p-10 pr-44 gap-10";
   const mainStyle = "col-span-2 p-10 pl-44 self-end";
   const sidebarStyle = "self-start";
-  const commentsStyle = "text-left";
-  const commentTitleStyle = "border-darkBG border-y-2 text-2xl";
 
   return (
     <div className={containerStyle}>
@@ -48,10 +46,7 @@ const Post = () => {
             </section>
             <Content content={post.content} sidebarStyle={sidebarStyle} />
           </article>
-          <section className={commentsStyle}>
-            <h4 className={commentTitleStyle}>Comments</h4>
-            <CommentList />
-          </section>
+          <CommentSection postid={postid} />
         </main>
       ) : (
         <main className={mainStyle}>Loading...</main>
