@@ -1,6 +1,6 @@
-const postData = (url, data, auth) => {
+const postData = (url, data, auth, method = "POST") => {
   const options = {
-    method: "POST",
+    method,
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
