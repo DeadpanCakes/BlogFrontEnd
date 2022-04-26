@@ -26,7 +26,7 @@ const CommentCtrls = ({ comment, setContent, setReply, setEditing }) => {
               auth.loggedUser._id === comment.author._id ? (
                 <>
                   <button onClick={handleEdit}>Edit</button>
-                  <Link to={`/comments/${comment._id}/delete`}>
+                  <Link to={`/comments/${comment._id}/delete`} state={comment}>
                     <button>Delete</button>
                   </Link>
                   <button onClick={handleReply}>Reply</button>
