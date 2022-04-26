@@ -3,7 +3,13 @@ import parseHtml from "html-react-parser";
 
 import CommentCtrls from "./CommentCtrls";
 
-const Comment = ({ comment, setReply, setContent, setEditing }) => {
+const Comment = ({
+  comment,
+  setReply,
+  setContent,
+  setEditing,
+  isPreview = false,
+}) => {
   const nestedComments = (comment.children || []).map((comment) => {
     return <Comment key={comment._id} comment={comment} setReply={setReply} />;
   });
@@ -20,12 +26,14 @@ const Comment = ({ comment, setReply, setContent, setEditing }) => {
           dangerouslySetInnerHTML={{ __html: parseHtml(comment.content) }}
         ></div>
       </div>
-      <CommentCtrls
-        comment={comment}
-        setReply={setReply}
-        setContent={setContent}
-        setEditing={setEditing}
-      />
+      {!isPreview ? (
+        <CommentCtrls
+          comment={comment}
+          setReply={setReply}
+          setContent={setContent}
+          setEditing={setEditing}
+        />
+      ) : null}
       <ul>{nestedComments}</ul>
     </li>
   );
