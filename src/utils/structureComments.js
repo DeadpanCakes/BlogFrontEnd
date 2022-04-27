@@ -6,24 +6,36 @@ const structureComments = (comments) => {
     commentMap[comment._id] = { children: [], ...comment };
   });
 
-  let one = 0;
+  const isParentDeleted = (targetComment, comments) => {
+    return !comments.find((comment) => comment._id === targetComment.parent);
+  };
+
   // iterate over the comments again and correctly nest the children
   comments.forEach((comment) => {
-    if (one < 1) {
-      one++;
-    }
     if (comment.parent) {
+      //If parent is deleted, insert a placeholder comment in comments
+      if (isParentDeleted(comment, comments)) {
+        const placeholder = { _id: comment.parent, isPlaceholder: true };
+        comments.push(placeholder);
+        commentMap[comment.parent] = { children: [], ...placeholder };
+      }
       const parent = commentMap[comment.parent];
-      parent.children.push(comment);
+      parent.children.push({
+        children: commentMap[comment._id].children,
+        ...comment,
+      });
     }
   });
 
-  // filter the list to return a list of correctly nested comments
-  return comments.filter((comment) => {
-    return !comment.parent;
-  }).map((comment) => {
-    return {...comment, children: commentMap[comment._id].children}
-  });
+  //filter the list to return a list of correctly nested comments
+  const output = comments
+    .filter((comment) => {
+      return !comment.parent;
+    })
+    .map((comment) => {
+      return { ...comment, children: commentMap[comment._id].children };
+    });
+  return output;
 };
 
 export default structureComments;
