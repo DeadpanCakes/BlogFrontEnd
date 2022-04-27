@@ -34,7 +34,13 @@ const DeleteConfirmation = () => {
           >
             Yes
           </button>
-          <button>No</button>
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
