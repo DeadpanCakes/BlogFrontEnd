@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import useComments from "../../hooks/useComments";
 import CommentList from "./CommentList";
@@ -9,6 +10,7 @@ const CommentSection = ({ postid }) => {
   //Style
   const containerStyle = "text-left";
   const commentTitleStyle = "border-darkBG border-y-2 text-2xl";
+  const linkStyle = "text-teal-400";
 
   //Init State
   const commentData = useComments(postid);
@@ -32,7 +34,12 @@ const CommentSection = ({ postid }) => {
                 editTarget={editTarget}
               />
             ) : (
-              <p>Sign in to comment</p>
+              <p>
+                <Link to="/login" className={linkStyle}>
+                  Sign in{" "}
+                </Link>
+                to comment
+              </p>
             )}
             <CommentList
               commentData={commentData}
