@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import structureComments from "../utils/structureComments";
 
 const useComments = (postid: String) => {
   const [comments, setComments] = useState<Comment[]>([]);
@@ -9,7 +8,7 @@ const useComments = (postid: String) => {
         `https://still-depths-86703.herokuapp.com/api/posts/${postid}/comments`
       );
       const data = await response.json();
-      setComments(structureComments(data));
+      setComments(data);
     };
     fetchComments();
   }, [postid]);
