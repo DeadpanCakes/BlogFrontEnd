@@ -3,6 +3,7 @@ import { useState } from "react";
 import useComments from "../../hooks/useComments";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
+import AuthContext from "../context/AuthContext";
 
 const CommentSection = ({ postid }) => {
   //Style
@@ -16,23 +17,33 @@ const CommentSection = ({ postid }) => {
   const [editTarget, setEditing] = useState(null);
 
   return (
-    <section className={containerStyle}>
-      <h4 className={commentTitleStyle}>Comments</h4>
-      <CommentForm
-        postid={postid}
-        replyingTo={replyingTo}
-        setReply={setReply}
-        formContent={formContent}
-        setContent={setContent}
-        editTarget={editTarget}
-      />
-      <CommentList
-        commentData={commentData}
-        setReply={setReply}
-        setContent={setContent}
-        setEditing={setEditing}
-      />
-    </section>
+    <AuthContext.Consumer>
+      {(auth) => {
+        return (
+          <section className={containerStyle}>
+            <h4 className={commentTitleStyle}>Comments</h4>
+            {auth.loggedUser ? (
+              <CommentForm
+                postid={postid}
+                replyingTo={replyingTo}
+                setReply={setReply}
+                formContent={formContent}
+                setContent={setContent}
+                editTarget={editTarget}
+              />
+            ) : (
+              <p>Sign in to comment</p>
+            )}
+            <CommentList
+              commentData={commentData}
+              setReply={setReply}
+              setContent={setContent}
+              setEditing={setEditing}
+            />
+          </section>
+        );
+      }}
+    </AuthContext.Consumer>
   );
 };
 
