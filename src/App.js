@@ -14,7 +14,9 @@ import User from "./components/users/User";
 import CommentList from "./components/comment/CommentList";
 import LoginPage from "./components/authentication/LoginPage";
 import SignUpPage from "./components/authentication/SignUpPage";
-import ErrPage from "./components//errPage/ErrorPage";
+import ErrPage from "./components/errPage/ErrorPage";
+import CommentForm from "./components/comment/CommentForm";
+import DeleteConfirmation from "./components/comment/DeleteConfirmation";
 
 function App() {
   const navigate = useNavigate();
@@ -73,6 +75,11 @@ function App() {
               element={<SignUpPage isLogged={authData.loggedUser} />}
             />
             <Route path="/err" element={<ErrPage />} />
+            <Route path="/editor" element={<CommentForm />} />
+            <Route
+              path="/comments/:commentid/delete"
+              element={<DeleteConfirmation />}
+            />
           </Routes>
         </div>
         <Footer />
